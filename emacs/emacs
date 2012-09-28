@@ -1,0 +1,53 @@
+;;; Erlang related
+(setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs" load-path))
+(setq erlang-root-dir "/usr/local/lib/erlang")
+(setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+(require 'erlang-start)
+
+;;; backup/autosave
+(defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
+(defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
+(setq backup-directory-alist (list (cons ".*" backup-dir)))
+(setq auto-save-list-file-prefix autosave-dir)
+(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+
+;;; no splash screen image
+(setq inhibit-splash-screen t)
+
+(defun arrange-frame (w h x y)
+  "Set the width, height, and x/y position of the current frame"
+  (let ((frame (selected-frame)))
+    (delete-other-windows)
+    (set-frame-position frame x y)
+    (set-frame-size frame w h)))
+
+;;; (arrange-frame 120 40 2 22)
+
+
+;; Enable Pymacs
+;(setq load-path (cons  "~/.emacs.d/lisp" load-path))
+;(autoload 'pymacs-apply "pymacs")
+;(autoload 'pymacs-call "pymacs")
+;(autoload 'pymacs-eval "pymacs" nil t)
+;(autoload 'pymacs-exec "pymacs" nil t)
+;(autoload 'pymacs-load "pymacs" nil t)
+;(autoload 'pymacs-autoload "pymacs")
+;;(eval-after-load "pymacs"
+;;  '(add-to-list 'pymacs-load-path /Library/Python/2.7/site-packages/"))
+
+;; Enable Ropemacs
+;(setq ropemacs-enable-shortcuts nil)
+;(setq ropemacs-local-prefix "C-c C-p")
+;(require 'pymacs)
+;(pymacs-load "ropemacs" "rope-")
+
+;;; Emacs color themes
+;(add-to-list 'load-path "/Users/sree/src/color-theme-6.6.0")
+;(require 'color-theme)
+;(add-to-list 'load-path "/Users/sree/src/emacs-color-theme-solarized")
+;(require 'color-theme-solarized)
+;(color-theme-solarized-dark)
+
+;;; Auto Complete
+;;(require 'auto-complete)
+;;(global-auto-complete-mode t)
