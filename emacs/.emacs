@@ -1,8 +1,3 @@
-;;; Set Monaco/Consolas as the default font
-(set-face-attribute 'default nil
-		    :family "Monaco"
-		    :height 110)
-
 ;;; Make switching b/w buffers easier
 (iswitchb-mode t)
 
@@ -70,14 +65,29 @@
 ;(pymacs-load "ropemacs" "rope-")
 
 ;;; Emacs color themes
-;(add-to-list 'load-path "/Users/sree/src/color-theme-6.6.0")
-;(require 'color-theme)
+(require 'color-theme)
 
 ;;; Activate Solarized theme
-;(add-to-list 'load-path "/Users/sree/src/emacs-color-theme-solarized")
-;(require 'color-theme-solarized)
-;(color-theme-solarized-dark)
+(require 'color-theme-solarized)
+(color-theme-solarized-light)
 
 ;;; Auto Complete
 ;(require 'auto-complete)
 ;(global-auto-complete-mode t)
+
+;;; Space for Emacs auto-generated settings
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(scroll-bar-mode nil)
+ '(size-indication-mode t)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 113 :width normal)))))
