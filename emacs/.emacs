@@ -27,11 +27,14 @@
 (setq auto-save-list-file-prefix autosave-dir)
 (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
+;; Set extensions path
+(setq load-path (cons  "~/.emacs.d" load-path))
+
 ;;; Erlang related
-(setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs" load-path))
-(setq erlang-root-dir "/usr/local/lib/erlang")
-(setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-(require 'erlang-start)
+;(setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs" load-path))
+;(setq erlang-root-dir "/usr/local/lib/erlang")
+;(setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+;(require 'erlang-start)
 
 ;;; Enable Python mode for Emacs
 (require 'python-mode)
@@ -69,7 +72,7 @@
 
 ;;; Activate Solarized theme
 (require 'color-theme-solarized)
-(color-theme-solarized-light)
+(color-theme-solarized-dark)
 
 ;;; Auto Complete
 ;(require 'auto-complete)
@@ -90,4 +93,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 113 :width normal)))))
+ '(default ((t (:family "Inconsolata" :foundry "outline" :slant normal :weight normal :height 113 :width normal)))))
