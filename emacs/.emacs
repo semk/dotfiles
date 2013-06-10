@@ -1,3 +1,13 @@
+;;; Enable marmalade package repository
+(require 'package)
+(add-to-list 'package-archives 
+	     '("marmalade" .
+	       "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+;;; Set the color theme
+(load-theme 'solarized-dark t)
+
 ;;; Make switching b/w buffers easier
 (iswitchb-mode t)
 
@@ -10,25 +20,12 @@
 (setq tab-width 4)
 (setq indent-line-function 'insert-tab)
 
-;;; Set appropriate window size
-(defun arrange-frame (w h x y)
-  "Set the width, height, and x/y position of the current frame"
-  (let ((frame (selected-frame)))
-    (delete-other-windows)
-    (set-frame-position frame x y)
-    (set-frame-size frame w h)))
-
-; (arrange-frame 120 40 2 22)
-
 ;;; backup/autosave
 (defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
 (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
 (setq backup-directory-alist (list (cons ".*" backup-dir)))
 (setq auto-save-list-file-prefix autosave-dir)
 (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
-
-;; Set extensions path
-(setq load-path (cons  "~/.emacs.d" load-path))
 
 ;;; Erlang related
 ;(setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs" load-path))
@@ -42,41 +39,17 @@
 ;;; Set python/ipython as the default Python shell
 (setq py-shell-name "python")
 (setq py-python-command "python")
-;(require 'ipython)
+(require 'ipython)
 
 ;;; Enable PEP8
-(require 'python-pep8)
+(require 'pep8)
 
 ;;; Enable PyLint
-(require 'python-pylint)
+(require 'pylint)
 
-;;; Enable Pymacs
-;(setq load-path (cons  "~/.emacs.d/lisp" load-path))
-;(autoload 'pymacs-apply "pymacs")
-;(autoload 'pymacs-call "pymacs")
-;(autoload 'pymacs-eval "pymacs" nil t)
-;(autoload 'pymacs-exec "pymacs" nil t)
-;(autoload 'pymacs-load "pymacs" nil t)
-;(autoload 'pymacs-autoload "pymacs")
-;(eval-after-load "pymacs"
-;  '(add-to-list 'pymacs-load-path /Library/Python/2.7/site-packages/"))
-
-;;; Enable Ropemacs
-;(setq ropemacs-enable-shortcuts nil)
-;(setq ropemacs-local-prefix "C-c C-p")
-;(require 'pymacs)
-;(pymacs-load "ropemacs" "rope-")
-
-;;; Emacs color themes
-(require 'color-theme)
-
-;;; Activate Solarized theme
-(require 'color-theme-solarized)
-(color-theme-solarized-dark)
-
-;;; Auto Complete
-;(require 'auto-complete)
-;(global-auto-complete-mode t)
+;;; Enable yasnippet
+(require 'yasnippet-bundle)
+(yas/global-mode t)
 
 ;;; Space for Emacs auto-generated settings
 (custom-set-variables
@@ -85,6 +58,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(safe-local-variable-values (quote ((py-master-file . "~/src/strata/strata/ndcp_gui.py") (py-master-file . "~/src/strata/strata/ndcp-gui.py"))))
  '(scroll-bar-mode nil)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
